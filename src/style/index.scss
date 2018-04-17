@@ -1,0 +1,35 @@
+
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+@import '~react-select/dist/react-select.css';
+@import '~react-virtualized/styles.css';
+@import '~react-virtualized-select/styles.css';
+
+.table_head_cell{
+  border: 1px solid #e1e3e4;
+  border-left: none;
+  margin-right: 0px;
+}
+.table_head_cell:first-of-type{
+      margin-left: 0px; 
+}
+
+.ReactVirtualized__Table__row{
+  border-bottom: 1px solid #f8f8f8;
+}
+.Select-control{
+  height: 30px;
+  border-radius: 0px;
+  border: 1px solid #dedede;
+}
+
+.Select-value{
+  line-height: 30px;
+}
+
+.Select-input{
+  height: 30px;
+}
+.Select-value-label{
+  font: 300 1.3em OpenSans-Regular;
+}

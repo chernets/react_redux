@@ -1,0 +1,13 @@
+{
+  "LANGUAGES" : [
+    {
+      "name": "Русский",
+      "value": "ru"
+    },
+    {
+      "name": "English",
+      "value": "en"
+    }
+  ],
+  "DEFAULT_LANG": "ru"
+}
