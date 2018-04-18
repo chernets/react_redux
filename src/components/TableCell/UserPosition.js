@@ -1,7 +1,7 @@
 import React from 'react';
-const UserPosition = ({ rowData }) => {
+const UserPosition = ({ cellData }) => {
   return (
-    <span>{rowData.userOrGroup.position}</span>
+    <span>{cellData.position}</span>
   )
 }
 

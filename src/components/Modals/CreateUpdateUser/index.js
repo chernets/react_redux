@@ -101,7 +101,7 @@ class CreateUpdateUser extends Component {
   }
 
   render() {
-    const { show, handleHide,
+    const { show, handleHide, delegates,
       userOrGroup, login, transportTypes,
       roles, groups, sc, notification,
       isFetching, isSaving, error
@@ -127,7 +127,8 @@ class CreateUpdateUser extends Component {
             roles,
             groups,
             sc,
-            notification
+            notification,
+            delegates
           }}
           onSubmit={submittedValues => {
             this.props.createOrUpdate(submittedValues, userOrGroup, login)
@@ -142,9 +143,9 @@ class CreateUpdateUser extends Component {
                     {hasRole('ADMIN_PUBLIC_KEY_UPDATE') && <Certificate />}
                     {hasRole('ADMIN_USER_SC_UPDATE') && <Security sc={values.sc} />}
                     {hasRole('ADMIN_USER_ROLES_UPDATE') && <Roles roles={values.roles} />}
-                    {hasRole('ADMIN_USER_GROUPS_UPDATE') && <Groups groups={values.groups} userOrGroup={userOrGroup}/>}
+                    {hasRole('ADMIN_USER_GROUPS_UPDATE') && <Groups groups={values.groups} userOrGroup={userOrGroup} />}
                     {hasRole('ADMIN_USER_NOTIF_UPDATE') && <Notification notification={values.notification} transportTypes={transportTypes} />}
-                    {hasRole('ADMIN_USER_DELEGATE_UPDATE') && userOrGroup.id !== null && <Delegates />}
+                    {hasRole('ADMIN_USER_DELEGATE_UPDATE') && userOrGroup.id !== null && <Delegates delegates={values.delegates} />}
                     {userOrGroup.id !== null && <History />}
                   </div>
                 </div>
@@ -179,6 +180,7 @@ const mapStateToProps = (state) => {
     sc: state.modalCreateUpdateUser.sc,
     transportTypes: state.modalCreateUpdateUser.transportTypes,
     notification: state.modalCreateUpdateUser.notification,
+    delegates: state.modalCreateUpdateUser.delegates,
     isSaving: state.modalCreateUpdateUser.isSaving,
     close: state.modalCreateUpdateUser.close,
     error: state.modalCreateUpdateUser.error,

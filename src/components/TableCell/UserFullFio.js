@@ -1,11 +1,11 @@
 import React from 'react';
-const UserFullFio = ({ rowData }) => {
+const UserFullFio = ({ cellData }) => {
   return (
     <div className="table_person-ava">
       <span className="msg-ava">
-        <img src={rowData.userOrGroup.getAvatar()} />
+        <img src={cellData.getAvatar()} />
       </span>
-      <span>{rowData.userOrGroup.getFioFull()}</span>
+      <span>{cellData.getFioFull()}</span>
     </div>
   )
 }

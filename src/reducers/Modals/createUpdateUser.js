@@ -8,6 +8,7 @@ const initValues = {
   roles: [],
   transportTypes: [],
   notification: [],
+  delegates: [],
   isSaving: false,
   close: false,
   error: null

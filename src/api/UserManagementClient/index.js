@@ -9,6 +9,7 @@ import revokeRolesFromUsersOrGroups from './revokeRolesFromUsersOrGroups'
 import addUsersToGroups from './addUsersToGroups'
 import removeUsersFromGroups from './removeUsersFromGroups'
 import getAllExistingRoles from './getAllExistingRoles'
+import getAllClientDelegates from './getAllClientDelegates'
 export {
   getAllUsers,
   getAllGroups,
@@ -20,5 +21,6 @@ export {
   revokeRolesFromUsersOrGroups,
   addUsersToGroups,
   removeUsersFromGroups,
-  getAllExistingRoles
+  getAllExistingRoles,
+  getAllClientDelegates
 }

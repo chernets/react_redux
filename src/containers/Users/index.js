@@ -12,7 +12,7 @@ import Pagination from '../../components/Pagination'
 
 import Search from './Search'
 
-import { UserPosition, UserFullFio, UserDepartmentName } from '../../components/TableCell/'
+import { UserPosition, UserFullFio, DepartmentName } from '../../components/TableCell/'
 
 import { ROW_HEIGHT, HEADER_HEIGHT, PAGINATION_HEIGHT } from '../../constant/table'
 
@@ -98,7 +98,7 @@ class Users extends Component {
                 >
                   <Column
                     label={translate('FULL_NAME')}
-                    dataKey='id'
+                    dataKey='userOrGroup'
                     flexGrow={1}
                     className='table_body_cell'
                     headerClassName='table_head_cell'
@@ -111,8 +111,11 @@ class Users extends Component {
                     flexGrow={1}
                     className='table_body_cell tl'
                     headerClassName='table_head_cell'
-                    dataKey='id'
-                    cellRenderer={UserDepartmentName}
+                    cellDataGetter={({rowData}) => {
+                      return rowData.userOrGroup.department
+                    }}
+                    dataKey={`userOrGroup`}
+                    cellRenderer={DepartmentName}
                   />
                   <Column
                     width={200}
@@ -120,7 +123,7 @@ class Users extends Component {
                     flexGrow={1}
                     className='table_body_cell tl'
                     headerClassName='table_head_cell'
-                    dataKey={`id`}
+                    dataKey={`userOrGroup`}
                     cellRenderer={UserPosition}
                   />
                 </Table>,

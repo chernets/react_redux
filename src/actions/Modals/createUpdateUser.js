@@ -166,13 +166,25 @@ export const loadValues = (id = null) => {
       fType: filterFieldType.STRING,
       condition: filterCondition.EQUAL
     }))
+    let filterDelegates = kazFilter({
+      countFilter: 999,
+      position: 0,
+      items: []
+    })
+    filterDelegates.items.push(filterItem({
+      field: 'clientToId',
+      value: id,
+      fType: filterFieldType.STRING,
+      condition: filterCondition.EQUAL
+    }))
     try {
       const result = await Promise.all([
         id === null ? [] : UserManagementClient.getRolesByUser(store.auth.token, id),
         id === null ? [] : UserManagementClient.getAllGroups(store.auth.token, filter),
         id === null ? [] : UserManagementClient.getSecurityClassificationsByUser(store.auth.token, id),
         NotificationService.getAllNotificationTransportTypes(store.auth.token, null),
-        NotificationService.getNotificationConfig(store.auth.token, id, null)
+        NotificationService.getNotificationConfig(store.auth.token, id, null),
+        id === null ? [] : UserManagementClient.getAllClientDelegates(store.auth.token, filterDelegates),
       ])
       dispatch({
         type: CUU_LOAD_VALUES_SUCCESS,
@@ -181,7 +193,8 @@ export const loadValues = (id = null) => {
           groups: result[1],
           sc: _.values(_.mapValues(result[2], (value, key) => { value.gname = key; return value })),
           transportTypes: result[3],
-          notification: result[4]
+          notification: result[4],
+          delegates: result[5]
         }
       });
     } catch (err) {
@@ -235,8 +248,8 @@ export const createOrUpdate = (values, userOrGroup, login) => {
         if (removeIDs.length > 0) await UserManagementClient.removeUsersFromGroups(store.auth.token, removeIDs, userIds)
         if (addIDs.length > 0) await UserManagementClient.addUsersToGroups(store.auth.token, addIDs, userIds)
       }
-      if(!_.isEqual(store.modalCreateUpdateUser.notification, values.notification)){
-        await NotificationService.updateNotificationConfig(store.auth.token, userOrGroup.id, values.notification.map(item => {return new NotificationConfig(item)}))
+      if (!_.isEqual(store.modalCreateUpdateUser.notification, values.notification)) {
+        await NotificationService.updateNotificationConfig(store.auth.token, userOrGroup.id, values.notification.map(item => { return new NotificationConfig(item) }))
       }
       dispatch({
         type: CREATE_OR_UPDATE_SUCCESS
