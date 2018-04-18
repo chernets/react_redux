@@ -19,7 +19,7 @@ class Delegates extends Component {
 
   render() {
     const translate = this.context.t
-    const { delegates = [] } = this.props
+    const { delegates = [], userOrGroup } = this.props
     return (
       <React.Fragment>
         <div className="create_doc_modal-header decision">
@@ -56,7 +56,7 @@ class Delegates extends Component {
                       headerClassName='table_head_cell'
                       width={200}
                       cellRenderer={(props) => {
-                        return <DateCell {...props} format='D MMM YYYY' />
+                        return <DateCell {...props} format='D MMM YYYY HH:mm' />
                       }}
                     />
                     <Column
@@ -67,7 +67,7 @@ class Delegates extends Component {
                       headerClassName='table_head_cell'
                       width={200}
                       cellRenderer={(props) => {
-                        return <DateCell {...props} format='D MMM YYYY' />
+                        return <DateCell {...props} format='D MMM YYYY HH:mm' />
                       }}
                     />
                     <Column
@@ -89,6 +89,7 @@ class Delegates extends Component {
                       headerRenderer={(props) => {
                         return <CreateCell {...props} onClick={() => {
                           this.props.showModal('createDelegate', {
+                            userOrGroup: userOrGroup,
                             closeModal: (values) => {
                               propsField.input.onChange([
                                 ...propsField.input.value, ...values

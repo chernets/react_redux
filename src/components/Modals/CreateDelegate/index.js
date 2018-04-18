@@ -37,7 +37,7 @@ class CreateDelegate extends Component {
   }
 
   render() {
-    const { show, handleHide, accounts } = this.props;
+    const { show, handleHide, accounts, userOrGroup } = this.props;
     const translate = this.context.t
     return (
       <Modal show={true} onHide={handleHide}>
@@ -58,7 +58,7 @@ class CreateDelegate extends Component {
             this.props.closeModal([
               new ClientDelegate({
                 fromUserId: _.head(submittedValues.users),
-                toUserId: new UserOrGroup(),
+                toUserId: new UserOrGroup(userOrGroup),
                 dateStart: submittedValues.dateStart,
                 dateEnd: submittedValues.dateEnd,
                 account: _.find(accounts, {id: submittedValues.account})

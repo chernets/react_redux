@@ -251,6 +251,12 @@ export const createOrUpdate = (values, userOrGroup, login) => {
       if (!_.isEqual(store.modalCreateUpdateUser.notification, values.notification)) {
         await NotificationService.updateNotificationConfig(store.auth.token, userOrGroup.id, values.notification.map(item => { return new NotificationConfig(item) }))
       }
+      if (!_.isEqual(store.modalCreateUpdateUser.delegates, values.delegates)) {
+        let removeIDs = _.difference(store.modalCreateUpdateUser.delegates, values.delegates).map(item => { return item.id })
+        let createDelegates = _.difference(values.delegates, store.modalCreateUpdateUser.delegates)
+        if (removeIDs.length > 0) await UserManagementClient.revokeClientDelegates(store.auth.token, removeIDs)
+        if (createDelegates.length > 0) await UserManagementClient.createOrUpdateClientDelegates(store.auth.token, userOrGroup.id, createDelegates)
+      }
       dispatch({
         type: CREATE_OR_UPDATE_SUCCESS
       });

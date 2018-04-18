@@ -145,7 +145,7 @@ class CreateUpdateUser extends Component {
                     {hasRole('ADMIN_USER_ROLES_UPDATE') && <Roles roles={values.roles} />}
                     {hasRole('ADMIN_USER_GROUPS_UPDATE') && <Groups groups={values.groups} userOrGroup={userOrGroup} />}
                     {hasRole('ADMIN_USER_NOTIF_UPDATE') && <Notification notification={values.notification} transportTypes={transportTypes} />}
-                    {hasRole('ADMIN_USER_DELEGATE_UPDATE') && userOrGroup.id !== null && <Delegates delegates={values.delegates} />}
+                    {hasRole('ADMIN_USER_DELEGATE_UPDATE') && userOrGroup.id !== null && <Delegates delegates={values.delegates} userOrGroup={userOrGroup} />}
                     {userOrGroup.id !== null && <History />}
                   </div>
                 </div>
