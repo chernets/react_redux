@@ -153,4 +153,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   getAllRoles: actions.modals.changeRoles.getAllRoles
 }, dispatch)
 
-export default connectModal({ name: 'changeRoles', destroyOnHide: true })((connect(mapStateToProps, mapDispatchToProps)(ChangeRoles)))
+export default connectModal({ name: 'changeRoles', destroyOnHide: true })(connect(mapStateToProps, mapDispatchToProps)(ChangeRoles))

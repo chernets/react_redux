@@ -140,7 +140,8 @@ class Information extends Component {
               <Field
                 name="userOrGroup.userType"
                 component={Select}
-                showKey={'name'}
+                labelKey={'name'}
+                valueKey={'value'}
                 translate={true}
                 type='select'
                 options={userType}
