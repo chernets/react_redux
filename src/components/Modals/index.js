@@ -6,6 +6,7 @@ import Profile from './Profile'
 import CreateUpdateUser from './CreateUpdateUser'
 import ChangeRoles from './ChangeRoles'
 import ChangeSecurityClassifications from './ChangeSecurityClassifications'
+import ChangeUserOrGroups from './ChangeUserOrGroups'
 class Modals extends Component {
 
 
@@ -15,7 +16,8 @@ class Modals extends Component {
       <Profile key='profile' />,
       <CreateUpdateUser key='createUpdateUser' />,
       <ChangeRoles key='changeRoles' />,
-      <ChangeSecurityClassifications key='changeSecurityClassifications' />
+      <ChangeSecurityClassifications key='changeSecurityClassifications' />,
+      <ChangeUserOrGroups key='changeUserOrGroups'/>
     ]
   }
 }

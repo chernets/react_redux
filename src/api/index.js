@@ -3,7 +3,7 @@ import * as UserManagementClient from './UserManagementClient'
 import * as AdminService from './AdminService'
 import * as NotificationService from './NotificationService'
 import * as SecurityClassificationClient from './SecurityClassificationClient'
-
+import * as DocumentPatternClient from './DocumentPatternClient'
 const kazFilter = (data) => {
   return new KazFilter(data)
 }
@@ -24,5 +24,6 @@ export {
   AdminService,
   UserManagementClient,
   NotificationService,
-  SecurityClassificationClient
+  SecurityClassificationClient,
+  DocumentPatternClient
 }
