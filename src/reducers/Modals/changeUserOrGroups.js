@@ -19,6 +19,7 @@ const initValues = {
   patternId: null,
   docPatternStageActionType: null,
   viewType: 'USERS',
+  searchText: '',
   isFetching: false,
   allUserOrGroups: [],
   bpmRoles: [],
@@ -49,6 +50,12 @@ export default (state = initValues, action) => {
         ...state,
         isFetching: false,
         error: action.payload
+      }
+    case actions.changeUserOrGroups.SEARCH_USERS_OR_GROUPS:
+      return{
+        ...state,
+        searchText: action.payload,
+        allUserOrGroups: []
       }
     case actions.changeUserOrGroups.GET_CLEAN_STORE_USERS_OR_GROUPS_REQUEST:
       return {

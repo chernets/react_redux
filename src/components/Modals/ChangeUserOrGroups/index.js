@@ -13,7 +13,6 @@ class ChangeUserOrGroups extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      search: '',
       userOrGroupsSelected: props.userOrGroupsSelected
     }
   }
@@ -27,7 +26,7 @@ class ChangeUserOrGroups extends Component {
   }
 
   render() {
-    const { show, handleHide, isFetching, name,
+    const { show, handleHide, isFetching, name, searchText,
       bpmRoles, userOrGroupsFixed, multiSelect
     } = this.props;
     const { userOrGroupsSelected } = this.state
@@ -43,7 +42,7 @@ class ChangeUserOrGroups extends Component {
             <div className="add_per_to_event-left">
               <div className="add_per_to_event-search-block">
                 <div className="search-btn-block no_btn-search width100 font10 clearfix">
-                  <input placeholder={translate('FIND')} maxLength="255" type="text" className="input fl" onChange={(e) => this.setState({ search: e.target.value })} />
+                  <SearchInput placeholder={translate('FIND')} maxLength="255" type="text" throttle={500} inputClassName="input fl" onChange={(value) => this.props.searchUserOrGroups(value)} />
                   <button type="button" className="search-btn fr">
                     <span className="kaz_icons search_icon"></span>
                   </button>
@@ -124,21 +123,21 @@ class ChangeUserOrGroups extends Component {
                               style={style}
                               className={`${itm.type === UserOrGroupType.USER ? 'add_per_to_event-block' : 'add_per_to_event-gp_block'}`}
                             >
-                            {itm.type === UserOrGroupType.USER && [
-                              <div className="msg-ava" key='ava'>
-                                <img src={itm.getAvatar()} alt="avatar" />
-                              </div>,
-                              <div className="msg_cont-info" key='info'>
-                                <p className="msg_fio">{itm.getFioFull()}</p>
-                                <p className="msg_fio-position">{itm.position}</p>
-                              </div>
-                            ]}
-                            {itm.type === UserOrGroupType.GROUP && (
-                              <div className="add_per_to_event-gp_name">
-                                <p className="add_per_to_event-gp_title">{itm.nameGroup}</p>
-                                <p className="add_per_to_event-gp_count">{itm.descriptionGroup}</p>
-                              </div>
-                            )}
+                              {itm.type === UserOrGroupType.USER && [
+                                <div className="msg-ava" key='ava'>
+                                  <img src={itm.getAvatar()} alt="avatar" />
+                                </div>,
+                                <div className="msg_cont-info" key='info'>
+                                  <p className="msg_fio">{itm.getFioFull()}</p>
+                                  <p className="msg_fio-position">{itm.position}</p>
+                                </div>
+                              ]}
+                              {itm.type === UserOrGroupType.GROUP && (
+                                <div className="add_per_to_event-gp_name">
+                                  <p className="add_per_to_event-gp_title">{itm.nameGroup}</p>
+                                  <p className="add_per_to_event-gp_count">{itm.descriptionGroup}</p>
+                                </div>
+                              )}
                               <div className="clear"></div>
                               {userOrGroupsFixed.indexOf(itm.id) === -1 && <span onClick={() => {
                                 this.setState({

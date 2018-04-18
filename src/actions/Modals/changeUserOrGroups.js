@@ -72,6 +72,14 @@ export const getAllUsersOrGroups = (firstLoad = false) => {
         condition: filterCondition.EQUAL
       }))
     }
+    if (store.modalChangeUserOrGroups.searchText !== '') {
+      filter.items.push(filterItem({
+        field: store.modalChangeUserOrGroups.viewType === 'USERS' ? 'FIO' : 'name',
+        value: store.modalChangeUserOrGroups.searchText,
+        fType: filterFieldType.STRING,
+        condition: filterCondition.CONTAIN
+      }))
+    }
     try {
       let allUserOrGroups = null;
       let bpmRoles = firstLoad && store.modalChangeUserOrGroups.patternId !== null ? await DocumentPatternClient.getPatternProcessRoles(store.auth.token, store.modalChangeUserOrGroups.patternId, null) : []
@@ -100,6 +108,18 @@ export const getAllUsersOrGroups = (firstLoad = false) => {
         payload: err
       })
     }
+  }
+}
+
+export const SEARCH_USERS_OR_GROUPS = 'SEARCH_USERS_OR_GROUPS'
+
+export const searchUserOrGroups = (searchText) => {
+  return async dispatch => {
+    dispatch({
+      type: SEARCH_USERS_OR_GROUPS,
+      payload: searchText
+    })
+    dispatch(getAllUsersOrGroups())
   }
 }
 
