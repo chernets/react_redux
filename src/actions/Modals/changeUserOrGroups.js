@@ -49,37 +49,42 @@ export const GET_ALL_USERS_OR_GROUPS_REQUEST = 'GET_ALL_USERS_OR_GROUPS_REQUEST'
 export const GET_ALL_USERS_OR_GROUPS_SUCCESS = 'GET_ALL_USERS_OR_GROUPS_SUCCESS'
 export const GET_ALL_USERS_OR_GROUPS_FAILURE = 'GET_ALL_USERS_OR_GROUPS_FAILURE'
 
+const createFilter = (store) => {
+  let filter = kazFilter({
+    countFilter: 25,
+    position: store.modalChangeUserOrGroups.allUserOrGroups.length,
+    orders: ['alphabetical'],
+    items: []
+  })
+  if (store.modalChangeUserOrGroups.profileUserEdit !== null &&
+    store.modalChangeUserOrGroups.userDoNotHasGroups &&
+    store.modalChangeUserOrGroups.viewType !== 'USERS'
+  ) {
+    filter.items.push(filterItem({
+      field: 'userDoNotHasGroups',
+      value: store.modalChangeUserOrGroups.profileUserEdit,
+      fType: filterFieldType.STRING,
+      condition: filterCondition.EQUAL
+    }))
+  }
+  if (store.modalChangeUserOrGroups.searchText !== '') {
+    filter.items.push(filterItem({
+      field: store.modalChangeUserOrGroups.viewType === 'USERS' ? 'FIO' : 'name',
+      value: store.modalChangeUserOrGroups.searchText,
+      fType: filterFieldType.STRING,
+      condition: filterCondition.CONTAIN
+    }))
+  }
+  return filter
+}
+
 export const getAllUsersOrGroups = (firstLoad = false) => {
   return async (dispatch, getState) => {
     const store = getState()
     dispatch({
       type: GET_ALL_USERS_OR_GROUPS_REQUEST
     });
-    let filter = kazFilter({
-      countFilter: 25,
-      position: store.modalChangeUserOrGroups.allUserOrGroups.length,
-      orders: ['alphabetical'],
-      items: []
-    })
-    if (store.modalChangeUserOrGroups.profileUserEdit !== null &&
-      store.modalChangeUserOrGroups.userDoNotHasGroups &&
-      store.modalChangeUserOrGroups.viewType !== 'USERS'
-    ) {
-      filter.items.push(filterItem({
-        field: 'userDoNotHasGroups',
-        value: store.modalChangeUserOrGroups.profileUserEdit,
-        fType: filterFieldType.STRING,
-        condition: filterCondition.EQUAL
-      }))
-    }
-    if (store.modalChangeUserOrGroups.searchText !== '') {
-      filter.items.push(filterItem({
-        field: store.modalChangeUserOrGroups.viewType === 'USERS' ? 'FIO' : 'name',
-        value: store.modalChangeUserOrGroups.searchText,
-        fType: filterFieldType.STRING,
-        condition: filterCondition.CONTAIN
-      }))
-    }
+    let filter = createFilter(store)
     try {
       let allUserOrGroups = null;
       let bpmRoles = firstLoad && store.modalChangeUserOrGroups.patternId !== null ? await DocumentPatternClient.getPatternProcessRoles(store.auth.token, store.modalChangeUserOrGroups.patternId, null) : []
