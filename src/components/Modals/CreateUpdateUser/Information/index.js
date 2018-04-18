@@ -114,6 +114,12 @@ class Information extends Component {
                   style: {
                     height: '92px'
                   },
+                  onKeyDown: (e) => {
+                    e.preventDefault()
+                  },
+                  onClick: (e) => {
+                    console.log(e)
+                  },
                   className: "textarea"
                 }}
               />
