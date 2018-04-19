@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import Modals from '../../components/Modals';
 import Main from '../Main'
 import Users from '../Users'
-
+import { Registries } from '../Admin'
 
 
 class Dashboard extends Component {
@@ -21,6 +21,10 @@ class Dashboard extends Component {
         <Route path="/admin/users" render={props => (
           <Users {...props} admin={true} />
         )} />
+        <Route path="/admin/registries" render={props => (
+          <Registries {...props} />
+        )} />
+        
       </Switch>,
       <Modals key='modals' />
     ]

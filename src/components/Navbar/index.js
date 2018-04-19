@@ -67,7 +67,7 @@ class Navbar extends Component {
         'subMenu': [
           {
             'title': 'REGISTERS',
-            'link': '/adminRegistries',
+            'link': '/admin/registries',
             'show': hasRole('ADMIN_REGISTRY_UPDATE'),
             'class': 'nav-admin-icons registries'
           },

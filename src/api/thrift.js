@@ -8,6 +8,7 @@ const _thrift = {
   'SecurityClassificationClient' : new window.SecurityClassificationServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/securityClassification-json`))),
   'DocumentPatternClient' : new window.DocumentPatternServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/document-pattern-management-json`))),
   'DepartmentClient' : new window.DepartmentServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/department-json`))),
+  'AggregationDataClient': new window.AggregationDataServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/aggregationData-json`))),
 }
 
 export const request = (fn) => {

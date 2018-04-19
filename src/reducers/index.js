@@ -9,7 +9,7 @@ import auth from './auth'
 import users from './users'
 
 import * as modals from './Modals'
-
+import * as admin from './Admin'
 const rootReducer = asyncInitialState.outerReducer(combineReducers({
   routing,
   i18nState,
@@ -22,7 +22,8 @@ const rootReducer = asyncInitialState.outerReducer(combineReducers({
   modalChangeRoles: modals.changeRoles,
   modalChangeSecurityClassifications: modals.changeSecurityClassifications,
   modalChangeUserOrGroups: modals.changeUserOrGroups,
-  modalChangeDepartments: modals.changeDepartment
+  modalChangeDepartments: modals.changeDepartment,
+  admin: combineReducers({ ...admin })
 }));
 
 export default rootReducer;
