@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { show } from 'redux-modal'
 import Input from '../../../FormComponents/Input'
 import Checkbox from '../../../FormComponents/Checkbox'
-import TextArea from '../../../FormComponents/TextArea'
+import DepartmentPath from '../../../FormComponents/DepartmentPath'
 import Select from '../../../FormComponents/Select'
 import { userType } from '../../../../utils/translateEnum'
 class Information extends Component {
@@ -17,6 +20,7 @@ class Information extends Component {
 
   render() {
     const translate = this.context.t
+    const { userOrGroup, formChange } = this.props
     return (
       <React.Fragment>
         <div className="create_doc_modal-content decision clearfix">
@@ -106,9 +110,9 @@ class Information extends Component {
             <div className="column_content">
               <span className="create_doc_modal-content-title">{translate('STRUCTURAL_SUBDIVISION')}*</span>
               <Field
-                name="userOrGroup.department.path"
+                name="userOrGroup.department"
                 className="input bord_radius3"
-                component={TextArea}
+                component={DepartmentPath}
                 type="text"
                 inputProps={{
                   style: {
@@ -118,7 +122,12 @@ class Information extends Component {
                     e.preventDefault()
                   },
                   onClick: (e) => {
-                    console.log(e)
+                    this.props.showModal('changeDepartment', {
+                      departmentsIsDefault: userOrGroup.department !== null ? [userOrGroup.department] : [],
+                      closeModal: (value) => {
+                        formChange('userOrGroup.department', value.length > 0 ? value[0] : null)
+                      }
+                    })
                   },
                   className: "textarea"
                 }}
@@ -164,4 +173,12 @@ Information.contextTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default Information
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  showModal: show
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Information);

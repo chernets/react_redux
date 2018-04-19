@@ -133,13 +133,14 @@ class CreateUpdateUser extends Component {
           onSubmit={submittedValues => {
             this.props.createOrUpdate(submittedValues, userOrGroup, login)
           }}
-          render={({ handleSubmit, change, reset, submitting, pristine, values }) => (
+          render={({ handleSubmit, change, reset, submitting, pristine, values }) => {
+            return(
             <form onSubmit={handleSubmit} noValidate>
               <Modal.Body className="modal_attach">
                 <div className="user-profile_wrap" style={{ height: 'calc(100vh - 285px', overflow: 'scroll' }}>
                   <div className="create_doc_modal-content-area">
                     <Settings userOrGroup={userOrGroup} />
-                    <Information />
+                    <Information userOrGroup={values.userOrGroup} formChange={change}/>
                     {hasRole('ADMIN_PUBLIC_KEY_UPDATE') && <Certificate />}
                     {hasRole('ADMIN_USER_SC_UPDATE') && <Security sc={values.sc} />}
                     {hasRole('ADMIN_USER_ROLES_UPDATE') && <Roles roles={values.roles} />}
@@ -155,7 +156,7 @@ class CreateUpdateUser extends Component {
                 <button className="btn_cancel bord_radius3" type="button" onClick={handleHide}>{translate('CLOSE')}</button>
               </Modal.Footer>
             </form>
-          )}
+          )}}
         />
       </Modal>
     )

@@ -7,6 +7,7 @@ const _thrift = {
   'NotificationClient' : new window.NotificationServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/notification-json`))),
   'SecurityClassificationClient' : new window.SecurityClassificationServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/securityClassification-json`))),
   'DocumentPatternClient' : new window.DocumentPatternServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/document-pattern-management-json`))),
+  'DepartmentClient' : new window.DepartmentServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/department-json`))),
 }
 
 export const request = (fn) => {

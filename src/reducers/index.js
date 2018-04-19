@@ -21,7 +21,8 @@ const rootReducer = asyncInitialState.outerReducer(combineReducers({
   modalCreateUpdateUser: modals.createUpdateUser,
   modalChangeRoles: modals.changeRoles,
   modalChangeSecurityClassifications: modals.changeSecurityClassifications,
-  modalChangeUserOrGroups: modals.changeUserOrGroups
+  modalChangeUserOrGroups: modals.changeUserOrGroups,
+  modalChangeDepartments: modals.changeDepartment
 }));
 
 export default rootReducer;

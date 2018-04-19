@@ -8,6 +8,8 @@ import ChangeRoles from './ChangeRoles'
 import ChangeSecurityClassifications from './ChangeSecurityClassifications'
 import ChangeUserOrGroups from './ChangeUserOrGroups'
 import CreateDelegate from './CreateDelegate'
+import ChangeDepartment from './ChangeDepartment'
+
 class Modals extends Component {
 
 
@@ -19,7 +21,8 @@ class Modals extends Component {
       <ChangeRoles key='changeRoles' />,
       <ChangeSecurityClassifications key='changeSecurityClassifications' />,
       <ChangeUserOrGroups key='changeUserOrGroups'/>,
-      <CreateDelegate key='createDelegate'/>
+      <CreateDelegate key='createDelegate'/>,
+      <ChangeDepartment key='changeDepartment'/>
     ]
   }
 }
