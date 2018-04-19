@@ -10,6 +10,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+
 const config = port => ({
   devtool: 'cheap-module-source-map',
   entry: {
@@ -50,7 +52,16 @@ const config = port => ({
       filename: 'commons.css',
       allChunks: true
     }),
-    new ScriptExtHtmlWebpackPlugin()
+    new ScriptExtHtmlWebpackPlugin(),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'jquery',
+          entry: 'dist/jquery.min.js',
+          global: 'jQuery',
+        }
+      ]
+    })
   ],
   module: {
     rules: [

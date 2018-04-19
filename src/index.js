@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import store from './store/configureStore';
 import Root from './containers/Root';
-
+import $ from 'jquery'
 import { URL, AVATAR} from './constant/server'
 
 window.avatarUrl = URL+AVATAR;

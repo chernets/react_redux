@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -35,6 +35,16 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'styles/index.[hash].css',
       allChunks: true
+    }),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'jquery',
+          entry: 'dist/jquery.min.js',
+          global: 'jQuery',
+        }
+      ],
+      outputPath: 'js/'
     })
   ],
   module: {
