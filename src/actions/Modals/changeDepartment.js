@@ -27,6 +27,12 @@ export const getAllDepartments = () => {
       fType: filterFieldType.STRING,
       condition: filterCondition.EQUAL
     }))
+    filter.items.push(filterItem({
+      field: 'accountId',
+      value: store.auth.accounts.map(itm => {return itm.id}).join(';'),
+      fType: filterFieldType.STRING,
+      condition: filterCondition.IN
+    }))
     if (store.modalChangeDepartments.searchText !== '') {
       filter.items.push(filterItem({
         field: 'name',

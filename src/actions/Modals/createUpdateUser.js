@@ -264,7 +264,7 @@ export const createOrUpdate = (values, userOrGroup, login) => {
       console.log(err)
       dispatch({
         type: CREATE_OR_UPDATE_FAILURE,
-        err: err
+        payload: err
       });
     }
 

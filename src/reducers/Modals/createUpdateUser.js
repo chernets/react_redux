@@ -76,7 +76,7 @@ export default (state = initValues, action) => {
       return {
         ...state,
         isSaving: false,
-        error: payload.err
+        error:  action.payload
       }
     }
     default:

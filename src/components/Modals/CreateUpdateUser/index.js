@@ -95,7 +95,7 @@ class CreateUpdateUser extends Component {
       errors.userOrGroup = { ...errors.userOrGroup, email: this.context.t(IS_EMAIL) }
     }
     if (isEmpty(values.userOrGroup.department)) {
-      errors.userOrGroup = { ...errors.userOrGroup, department: { ...values.userOrGroup.department, path: this.context.t(IS_EMPTY) } }
+      errors.userOrGroup = { ...errors.userOrGroup, department: this.context.t(IS_EMPTY)  }
     }
     return errors
   }
@@ -134,6 +134,7 @@ class CreateUpdateUser extends Component {
             this.props.createOrUpdate(submittedValues, userOrGroup, login)
           }}
           render={({ handleSubmit, change, reset, submitting, pristine, values }) => {
+            console.log(values)
             return(
             <form onSubmit={handleSubmit} noValidate>
               <Modal.Body className="modal_attach">
