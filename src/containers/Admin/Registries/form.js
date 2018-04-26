@@ -29,6 +29,9 @@ class RegForm extends Component {
     if (isEmpty(values.viewRule)) {
       errors.viewRule = this.context.t(IS_EMPTY)
     }
+    if (values.accountList.length === 0) {
+      errors.accountList = this.context.t(IS_EMPTY)
+    }
     return errors
   }
 
@@ -78,6 +81,7 @@ class RegForm extends Component {
                     <td onClick={() =>
                       this.props.showModalUsersOrGroup({
                         showgroup: true,
+                        accounts: values.accountList,
                         userOrGroupsSelected: values.userOrGrList.map(itm => { return new UserOrGroup(itm) }),
                         cb: (result) => {
                           change('userOrGrList', result.map((item) => {
@@ -112,9 +116,9 @@ class RegForm extends Component {
                           <td>
                             <p>{acc.accountName}</p>
                           </td>
-                          <td className="tc">
-                            <Field name={`accountList`} component={(propsField) => {
-                              return (
+                          <Field name={`accountList`} component={(propsField) => {
+                            return (
+                              <td className={`tc${propsField.meta.error && propsField.meta.touched ? ' error' : ''}`}>
                                 <Field name={`accounts[${index}].id`}
                                   {...acc}
                                   component={Account}
@@ -127,10 +131,10 @@ class RegForm extends Component {
                                     }
                                   }}
                                 />
-                              )
-                            }}
-                            />
-                          </td>
+                              </td>
+                            )
+                          }}
+                          />
                         </tr>
                       )
                     })}
