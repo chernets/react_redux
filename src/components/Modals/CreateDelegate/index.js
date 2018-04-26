@@ -61,7 +61,7 @@ class CreateDelegate extends Component {
                 toUserId: new UserOrGroup(userOrGroup),
                 dateStart: submittedValues.dateStart,
                 dateEnd: submittedValues.dateEnd,
-                account: _.find(accounts, {id: submittedValues.account})
+                account: _.find(accounts, { id: submittedValues.account })
               })
             ])
             handleHide()
@@ -73,9 +73,9 @@ class CreateDelegate extends Component {
                   <div className="column clearfix" style={{ marginTop: 0 }}>
                     <span className="create_doc_modal-content-title">{translate('USER')}*</span>
                     {values.users.map(itm => {
-                      return(
+                      return (
                         <div className="data_doc-content half-width fl" key={itm.id}>
-                          <UserOrGroupView userOrGroup={new UserOrGroup(itm)}/>
+                          <UserOrGroupView userOrGroup={new UserOrGroup(itm)} />
                         </div>
                       )
                     })}
@@ -92,12 +92,11 @@ class CreateDelegate extends Component {
                                   if (_.find(values.users, { id: item.id }) !== undefined) {
                                     return _.find(values.users, { id: item.id })
                                   }
-                                  return {
-                                    ...new UserOrGroup(item)
-                                  }
+                                  return new UserOrGroup(item)
                                 }))
                               }
-                            })} />
+                            })}
+                          />
                         )
                       }} />
                     </div>

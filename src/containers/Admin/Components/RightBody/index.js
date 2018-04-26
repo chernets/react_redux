@@ -9,7 +9,7 @@ class RightBody extends Component {
     const translate = this.context.t;
     const { children } = this.props;
     return (
-      <div className="business_proc-right-area" style={{height: 'calc(100% - 115px)'}}>
+      <div className="business_proc-right-area" style={{height: 'calc(100% - 115px)', overflowY: 'scroll'}}>
         <div className="main-r-block">
           <div className="stage_main-block my_super_class">
             <div className="business_proc-right-contant">

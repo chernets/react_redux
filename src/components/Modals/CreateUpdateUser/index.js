@@ -134,7 +134,6 @@ class CreateUpdateUser extends Component {
             this.props.createOrUpdate(submittedValues, userOrGroup, login)
           }}
           render={({ handleSubmit, change, reset, submitting, pristine, values }) => {
-            console.log(values)
             return(
             <form onSubmit={handleSubmit} noValidate>
               <Modal.Body className="modal_attach">

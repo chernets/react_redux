@@ -8,6 +8,7 @@ import { AutoSizer, Table, Column } from 'react-virtualized';
 import { ROW_HEIGHT, HEADER_HEIGHT, PAGINATION_HEIGHT } from '../../../constant/table'
 import Pagination from '../../../components/Pagination'
 import RemoveCell from '../../../components/TableCell/RemoveCell'
+import RegForm from './form'
 class Registries extends Component {
   constructor(props) {
     super(props)
@@ -25,9 +26,9 @@ class Registries extends Component {
     const translate = this.context.t;
     const { list = [], selected = null, isFetching } = this.props
     return [
-      <Header key='header' label={'CREATE_A_REGISTRY'} onClick={() => console.log('create')} />,
+      <Header key='header' label={'CREATE_A_REGISTRY'} onClick={() => this.props.byId()} />,
       <div className={`main_content ${selected !== null ? 'open_params' : ''}`} key='content'>
-        <div className="l-main_cont" style={{ width: '100%', height: '100%' }}>
+        <div className="l-main_cont" style={{ height: '100%' }}>
           <AutoSizer>
             {({ height, width }) => [
               <Table
@@ -36,7 +37,7 @@ class Registries extends Component {
                 rowCount={list.length}
                 onRowClick={({ rowData, event, index }) => {
                   if (event.target.classList.contains('close_big')) return;
-                  console.log(rowData)
+                  this.props.byId(rowData.id)
                 }}
                 rowHeight={ROW_HEIGHT}
                 headerHeight={HEADER_HEIGHT}
@@ -68,7 +69,7 @@ class Registries extends Component {
                   width={40}
                   cellRenderer={(props) => {
                     return <RemoveCell {...props} onClick={() => {
-                      console.log(props.cellData)
+                      this.props.destroy(props.cellData)
                     }} />
                   }}
                 />
@@ -88,9 +89,18 @@ class Registries extends Component {
         <div className="r-main_cont business_proc-right">
           <RightTitle label={'REGISTRY'} />
           <RightBody>
-            <div>123</div>
+            {selected !== null && <RegForm selected={selected} />}
           </RightBody>
-          <RightFooter disabled={false} />
+          <div className="business_proc-btn">
+            <div className="btn_select">
+              <span className={`btn_select-text ${false ? 'disabled' : ''}`} onClick={() => {
+                document
+                  .getElementById("RegForm")
+                  .dispatchEvent(new Event("submit", { cancelable: true }))
+              }}>{translate('SAVE')}</span>
+            </div>
+          </div>
+          {/* <RightFooter disabled={false} onSubmit /> */}
         </div>
       </div>
     ]
@@ -108,8 +118,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getAll: actions.admin.registries.getAll,
-  clearStore: actions.admin.registries.clearStore
+  ...actions.admin.registries
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Registries);

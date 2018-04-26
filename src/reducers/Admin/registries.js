@@ -19,6 +19,26 @@ export default (state = initValues, action) => {
         isFetching: false,
         list: action.payload
       }
+    case actions.GET_REGISTRIES_REQUEST:
+      return {
+        ...state,
+        selected: null
+      }
+    case actions.GET_REGISTRIES_SUCCESS:
+      return {
+        ...state,
+        selected: action.payload
+      }
+    case actions.CREATE_UPDATE_REGISTRIES_SUCCESS:
+      return {
+        ...state,
+        selected: null
+      }
+    case actions.DESTROY_REGISTRIES_SUCCESS:
+      return {
+        ...state,
+        selected: null
+      }
     case actions.CLEAN_STORE_REGISTRIES:
       return {
         ...initValues

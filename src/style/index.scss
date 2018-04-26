@@ -58,3 +58,11 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
   right: 25px;
   background-color:#000;
 }
+
+.input.error{
+  border: 1px solid #db7380 !important
+}
+
+.textarea.error{
+  border: 1px solid #db7380 !important
+}
