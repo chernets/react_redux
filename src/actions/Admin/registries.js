@@ -65,10 +65,13 @@ export const byId = (id = null) => {
       let request = id !== null ? await AggregationDataClient.getRegistryById(store.auth.token, id, [AggregationRequiredType.REGISTRY_RULE, AggregationRequiredType.REGISTRY_USERS, AggregationRequiredType.REGISTRY_ACCOUNTS]) : new Registry()
       if(request.accountList === null) request.accountList = []
       if(request.userOrGrList === null) request.userOrGrList = []
-      dispatch({
-        type: GET_REGISTRIES_SUCCESS,
-        payload: request
-      });
+      setTimeout(()=>{
+        dispatch({
+          type: GET_REGISTRIES_SUCCESS,
+          payload: request
+        });
+      }, id === null ? 0 : 300)
+
     } catch (err) {
       dispatch({
         type: GET_REGISTRIES_FAILURE,

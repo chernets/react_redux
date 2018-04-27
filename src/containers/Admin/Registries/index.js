@@ -38,6 +38,7 @@ class Registries extends Component {
                 rowCount={list.length}
                 onRowClick={({ rowData, event, index }) => {
                   if (event.target.classList.contains('fa-trash-o') || event.target.classList.contains('removed_cell')) return;
+                  if (selected !== null && selected.id === rowData.id) return;
                   this.props.byId(rowData.id)
                 }}
                 rowHeight={ROW_HEIGHT}
@@ -121,7 +122,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  ...actions.admin.registries,show
+  ...actions.admin.registries, show
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Registries);
