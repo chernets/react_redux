@@ -7,13 +7,13 @@ import { Form, Field } from 'react-final-form'
 import { Input, TextArea, List, Account } from '../../../components/FormComponents/Table'
 import { RightTitle } from '../Components'
 import _ from 'lodash'
-import { isEmpty, isEmail } from '../../../utils/validators'
-import { IS_EMPTY, IS_EMAIL } from '../../../constant/validators'
+import { isEmpty } from '../../../utils/validators'
+import { IS_EMPTY } from '../../../constant/validators'
 class RegForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showAcc: false
+      showAcc: true
     }
   }
 
