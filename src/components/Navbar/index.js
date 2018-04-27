@@ -72,6 +72,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons registries'
           },
           {
+            'title': 'FILE_STORAGES',
+            'link': '/admin/filestorages',
+            'show': hasRole('ADMIN_STORAGE_UPDATE'),
+            'class': 'nav-admin-icons file-storage'
+          },
+          {
             'title': 'USERS',
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),

@@ -15,6 +15,19 @@ userType[UserType.TECHNICAL] = {
   name: 'TECHNICAL',
   value: UserType.TECHNICAL
 }
+
+
+let fileStorageType = []
+fileStorageType[FileStorageType.PRIMARY] = {
+  name: 'PRIMARY',
+  value: FileStorageType.PRIMARY
+}
+fileStorageType[FileStorageType.ARCHIVE] = {
+  name: 'ARCHIVE',
+  value: FileStorageType.ARCHIVE
+}
+
 export {
-  userType
+  userType,
+  fileStorageType
 }

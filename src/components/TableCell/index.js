@@ -5,6 +5,7 @@ import DateCell from './DateCell'
 import AccountCell from './AccountCell'
 import CreateCell from './CreateCell'
 import RemoveCell from './RemoveCell'
+import CheckBoxCell from './CheckBoxCell'
 export {
   UserPosition,
   UserFullFio,
@@ -12,5 +13,6 @@ export {
   DateCell,
   AccountCell,
   CreateCell,
-  RemoveCell
+  RemoveCell,
+  CheckBoxCell
 }

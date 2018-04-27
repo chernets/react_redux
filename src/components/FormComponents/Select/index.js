@@ -7,19 +7,22 @@ import PropTypes from 'prop-types'
 
 const Select = (props, context) => {
   return (
-    <VirtualizedSelect options={props.options.map(item => {
-        if(props.translate) item[props.labelKey] = context.t(item[props.labelKey])
+    <div className={`${props.meta.error && props.meta.touched ? 'error': ''}`}>
+      <VirtualizedSelect options={props.options.map(item => {
+        if (props.translate) item[props.labelKey] = context.t(item[props.labelKey])
         return item
       })}
-      optionHeight={30}
-      clearable={false}
-      labelKey={props.labelKey}
-      valueKey={props.valueKey}
-      value={_.find(props.options, (itm) => {
-        return itm[props.valueKey] === props.input.value
-      })}
-      onChange={(options) => props.input.onChange(options[props.valueKey])}
-    />
+        optionHeight={30}
+        clearable={false}
+        labelKey={props.labelKey}
+        valueKey={props.valueKey}
+        value={_.find(props.options, (itm) => {
+          return itm[props.valueKey] === props.input.value
+        })}
+        disabled={props.disabled || false}
+        onChange={(options) => props.input.onChange(options[props.valueKey])}
+      />
+    </div>
   )
 }
 

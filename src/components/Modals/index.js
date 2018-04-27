@@ -9,7 +9,7 @@ import ChangeSecurityClassifications from './ChangeSecurityClassifications'
 import ChangeUserOrGroups from './ChangeUserOrGroups'
 import CreateDelegate from './CreateDelegate'
 import ChangeDepartment from './ChangeDepartment'
-
+import AdminPassword from './AdminPassword'
 class Modals extends Component {
 
 
@@ -22,7 +22,8 @@ class Modals extends Component {
       <ChangeSecurityClassifications key='changeSecurityClassifications' />,
       <ChangeUserOrGroups key='changeUserOrGroups'/>,
       <CreateDelegate key='createDelegate'/>,
-      <ChangeDepartment key='changeDepartment'/>
+      <ChangeDepartment key='changeDepartment'/>,
+      <AdminPassword key='adminPassword' />
     ]
   }
 }
