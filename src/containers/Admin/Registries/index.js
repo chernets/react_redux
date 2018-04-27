@@ -9,6 +9,7 @@ import { ROW_HEIGHT, HEADER_HEIGHT, PAGINATION_HEIGHT } from '../../../constant/
 import Pagination from '../../../components/Pagination'
 import RemoveCell from '../../../components/TableCell/RemoveCell'
 import RegForm from './form'
+import { show } from 'redux-modal'
 class Registries extends Component {
   constructor(props) {
     super(props)
@@ -36,7 +37,7 @@ class Registries extends Component {
                 height={height - PAGINATION_HEIGHT}
                 rowCount={list.length}
                 onRowClick={({ rowData, event, index }) => {
-                  if (event.target.classList.contains('close_big')) return;
+                  if (event.target.classList.contains('fa-trash-o') || event.target.classList.contains('removed_cell')) return;
                   this.props.byId(rowData.id)
                 }}
                 rowHeight={ROW_HEIGHT}
@@ -64,12 +65,15 @@ class Registries extends Component {
                 <Column
                   label={''}
                   dataKey='id'
-                  className='table_body_cell'
+                  className='table_body_cell removed_cell'
                   headerClassName='table_head_cell clickable'
                   width={40}
                   cellRenderer={(props) => {
                     return <RemoveCell {...props} onClick={() => {
-                      this.props.destroy(props.cellData)
+                      this.props.show('confirmation', {
+                        desc: translate('CONFIRM_THAT_THE_REGISTRY_HAS_BEEN_DELETED', { name: props.rowData.regName }),
+                        closeModal: () => this.props.destroy(props.cellData)
+                      })
                     }} />
                   }}
                 />
@@ -100,7 +104,6 @@ class Registries extends Component {
               }}>{translate('SAVE')}</span>
             </div>
           </div>
-          {/* <RightFooter disabled={false} onSubmit /> */}
         </div>
       </div>
     ]
@@ -118,7 +121,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  ...actions.admin.registries
+  ...actions.admin.registries,show
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Registries);
