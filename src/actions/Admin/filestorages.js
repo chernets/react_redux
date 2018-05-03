@@ -16,10 +16,10 @@ export const getAll = () => {
       position: 0,
       items: []
     })
-    if(store.admin.filestorages.account === null || store.admin.filestorages.account.id === null){
+    if(store.admin.filestorages.account !== null && store.admin.filestorages.account.id !== null){
       filter.items.push(filterItem({
         field: 'accountId',
-        value: sstore.admin.filestorages.account.id,
+        value: store.admin.filestorages.account.id,
         fType: filterFieldType.STRING,
         condition: filterCondition.EQUAL
       }))
@@ -35,7 +35,7 @@ export const getAll = () => {
       let request = await AdminService.getAllFileStorages(store.auth.token, filter)
       dispatch({
         type: GET_ALL_FILE_STORAGE_SUCCESS,
-        payload: request
+        payload: store.admin.filestorages.type === null || store.admin.filestorages.type.id === null ? request : _.filter(request, { type : store.admin.filestorages.type.id })
       });
     } catch (err) {
       dispatch({
@@ -126,6 +126,30 @@ export const destroy = (ids, password) => {
     }
   }
 }
+export const SELECT_ACCOUNT_FILE_STORAGE = 'SELECT_ACCOUNT_FILE_STORAGE'
+
+export const selectedAccount = (data) => {
+  return async dispatch => {
+    dispatch({
+      type: SELECT_ACCOUNT_FILE_STORAGE,
+      payload: data
+    });
+    dispatch(getAll())
+  }
+}
+
+export const SELECT_TYPE_FILE_STORAGE = 'SELECT_TYPE_FILE_STORAGE'
+
+export const selectedType = (data) => {
+  return async dispatch => {
+    dispatch({
+      type: SELECT_TYPE_FILE_STORAGE,
+      payload: data
+    });
+    dispatch(getAll())
+  }
+}
+
 
 export const CLEAN_STORE_FILE_STORAGE = 'CLEAN_STORE_FILE_STORAGE'
 

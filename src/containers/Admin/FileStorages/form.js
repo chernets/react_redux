@@ -10,6 +10,7 @@ import { Input, TextArea, List, Account } from '../../../components/FormComponen
 import { RightTitle } from '../Components'
 import _ from 'lodash'
 import { isEmpty } from '../../../utils/validators'
+import validUrl from 'valid-url'
 import { IS_EMPTY } from '../../../constant/validators'
 import { fileStorageType } from '../../../utils/translateEnum'
 import { show } from 'redux-modal'
@@ -29,6 +30,8 @@ class FileStorageForm extends Component {
     } 
     if (isEmpty(values.uri)) {
       errors.uri = this.context.t(IS_EMPTY)
+    }else if(validUrl.isWebUri(values.uri) === undefined){
+      errors.uri = this.context.t('No url')
     }
     if (isEmpty(values.accountId)) {
       errors.accountId = this.context.t(IS_EMPTY)

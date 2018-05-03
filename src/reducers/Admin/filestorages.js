@@ -30,7 +30,8 @@ export default (state = initValues, action) => {
     case actions.GET_FILE_STORAGE_SUCCESS:
       return {
         ...state,
-        selected: action.payload
+        selected: action.payload,
+        error: null
       }
     case actions.CREATE_UPDATE_FILE_STORAGE_SUCCESS:
       return {
@@ -48,9 +49,24 @@ export default (state = initValues, action) => {
         ...state,
         selected: null
       }
+    case actions.DESTROY_FILE_STORAGE_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
     case actions.CLEAN_STORE_FILE_STORAGE:
       return {
         ...initValues
+      }
+    case actions.SELECT_ACCOUNT_FILE_STORAGE:
+      return {
+        ...state,
+        account: action.payload
+      }
+    case actions.SELECT_TYPE_FILE_STORAGE:
+      return {
+        ...state,
+        type: action.payload
       }
     default:
       return state;

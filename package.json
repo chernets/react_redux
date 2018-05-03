@@ -87,6 +87,7 @@
     "redux-async-initial-state": "^0.2.1",
     "redux-i18n": "^1.5.13",
     "redux-modal": "^1.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "valid-url": "^1.0.9"
   }
 }

@@ -12,7 +12,7 @@ import FileStorageForm from './form'
 import { show } from 'redux-modal'
 import { fileStorageType } from '../../../utils/translateEnum'
 import { toast } from 'react-toastify';
-
+import HeaderDropDown from '../../../components/HeaderDropDown'
 class FileStorages extends Component {
   constructor(props) {
     super(props)
@@ -22,9 +22,9 @@ class FileStorages extends Component {
     this.props.getAll()
   }
 
-  componentDidUpdate(prevProps){
-    if(prevProps.error !== this.props.error && this.props.error !== null){
-      toast(this.props.error.message || 'undefind error', { 
+  componentDidUpdate(prevProps) {
+    if (prevProps.error !== this.props.error && this.props.error !== null) {
+      toast(this.props.error.message || 'undefind error', {
         type: toast.TYPE.ERROR
       })
     }
@@ -35,10 +35,41 @@ class FileStorages extends Component {
   }
 
   render() {
+
     const translate = this.context.t;
-    const { list = [], selected = null, isFetching } = this.props
+    const { list = [], selected = null, isFetching, accounts, account, type } = this.props
     return [
-      <Header key='header' label={'CREATE_A_STORE'} onClick={() => this.props.byId()} />,
+      <Header key='header' label={'CREATE_A_STORE'} onClick={() => this.props.byId()}>
+        <HeaderDropDown
+          defaultTitle={translate('ALL_ACCOUNTS')}
+          icon={'kaz_account_icon'}
+          name={'accountName'}
+          desc={null}
+          active={account}
+          items={[new Account({ id: null, accountName: translate('ALL_ACCOUNTS') }), ...accounts]}
+          updateActive={(data) => this.props.selectedAccount(data)}
+        />
+        <HeaderDropDown
+          defaultTitle={translate('ALL_TYPES')}
+          icon={'kaz_account_icon'}
+          name={'name'}
+          desc={null}
+          active={type}
+          items={[{
+            id: null,
+            name: translate('ALL_TYPES')
+          },
+          {
+            id: FileStorageType.PRIMARY,
+            name: translate('BASIC')
+          },
+          {
+            id: FileStorageType.ARCHIVE,
+            name: translate('ARCHIVE')
+          }]}
+          updateActive={(data) => this.props.selectedType(data)}
+        />
+      </Header>,
       <div className={`main_content ${selected !== null ? 'open_params' : ''}`} key='content'>
         <div className="l-main_cont" style={{ height: '100%' }}>
           <AutoSizer>
@@ -140,10 +171,16 @@ class FileStorages extends Component {
                   cellRenderer={(props) => {
                     return <RemoveCell {...props} onClick={() => {
                       this.props.show('confirmation', {
-                        desc: translate('CONFIRM_THAT_THE_REGISTRY_HAS_BEEN_DELETED', { name: props.rowData.regName }),
-                        closeModal: () => this.props.destroy(props.cellData)
+                        desc: translate('YOU_ARE_ABOUT_TO_DELETE_THE_FILE_STORAGE_WHICH_MAY_RESULT_IN_LOSS_OF_DATA_FROM_THIS_STORAGE', { name: props.rowData.descriptionFileStorage }),
+                        closeModal: () =>
+                          this.props.show('adminPassword', {
+                            closeModal: (password) => {
+                              this.props.destroy([props.cellData], password)
+                            }
+                          })
                       })
-                    }} />
+                    }
+                    } />
                   }}
                 />
               </Table>,
@@ -185,7 +222,8 @@ FileStorages.contextTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    ...state.admin.filestorages
+    ...state.admin.filestorages,
+    accounts: state.auth.accounts
   }
 }
 
