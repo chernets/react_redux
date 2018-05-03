@@ -27,7 +27,25 @@ fileStorageType[FileStorageType.ARCHIVE] = {
   value: FileStorageType.ARCHIVE
 }
 
+let keyState = []
+keyState[KeyState.LOADED] = {
+  id: 'KeyState.LOADED',
+  name: 'UPLOADED',
+  value: KeyState.LOADED
+};
+keyState[KeyState.CONFIRM] = {
+  name: 'CONFIRMED_1',
+  id: 'KeyState.CONFIRM',
+  value: KeyState.CONFIRM
+};
+keyState[KeyState.PROHIBITED] = {
+  name: 'PROHIBITED',
+  id: 'KeyState.PROHIBITED',
+  value: KeyState.PROHIBITED
+};
+
 export {
   userType,
-  fileStorageType
+  fileStorageType,
+  keyState
 }

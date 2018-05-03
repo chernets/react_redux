@@ -82,6 +82,12 @@ class Navbar extends Component {
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),
             'class': 'nav-admin-icons users'
+          },
+          {
+            'title': 'KEYS_PAGE',
+            'link': '/admin/publickeys',
+            'show': hasRole('ADMIN_PUBLIC_KEY_UPDATE'),
+            'class': 'nav-admin-icons keys'
           }
         ]
 

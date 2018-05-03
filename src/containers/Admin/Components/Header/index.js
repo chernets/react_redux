@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 class Header extends Component {
   static propTypes = {
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    label: PropTypes.string,
+    onClick: PropTypes.func,
     children: PropTypes.any
   };
 
@@ -13,11 +13,11 @@ class Header extends Component {
     return (
       <header className="clearfix">
         {children}
-        <div className="create_doc-area font10 fr">
+        {label !== undefined && <div className="create_doc-area font10 fr">
           <button className="create_doc" onClick={onClick}>
             <span>{translate(label)}</span>
           </button>
-        </div>
+        </div>}
       </header>
     )
   }

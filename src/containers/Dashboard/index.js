@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import Modals from '../../components/Modals';
 import Main from '../Main'
 import Users from '../Users'
-import { Registries, FileStorages } from '../Admin'
+import { Registries, FileStorages, PublicKeys } from '../Admin'
 import { ToastContainer } from 'react-toastify';
 
 class Dashboard extends Component {
@@ -26,6 +26,9 @@ class Dashboard extends Component {
         )} />
         <Route path="/admin/filestorages" render={props => (
           <FileStorages {...props} />
+        )} />
+        <Route path="/admin/publickeys" render={props => (
+          <PublicKeys {...props} />
         )} />
       </Switch>,
       <Modals key='modals' />,

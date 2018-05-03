@@ -12,6 +12,7 @@ import getAllExistingRoles from './getAllExistingRoles'
 import getAllClientDelegates from './getAllClientDelegates'
 import createOrUpdateClientDelegates from './createOrUpdateClientDelegates'
 import revokeClientDelegates from './revokeClientDelegates'
+import getAllUserPublicKeyInfo from './getAllUserPublicKeyInfo'
 export {
   getAllUsers,
   getAllGroups,
@@ -26,5 +27,6 @@ export {
   getAllExistingRoles,
   getAllClientDelegates,
   createOrUpdateClientDelegates,
-  revokeClientDelegates
+  revokeClientDelegates,
+  getAllUserPublicKeyInfo
 }

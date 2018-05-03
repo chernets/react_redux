@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import enhanceWithClickOutside from 'react-click-outside'
 
 class HeaderDropDown extends Component {
@@ -38,13 +39,13 @@ class HeaderDropDown extends Component {
 
   render() {
     const { open } = this.state
-    const { active, name, desc, items, icon, defaultTitle, updateActive } = this.props
+    const { active, name, desc, items, icon, defaultTitle, updateActive, translate = false } = this.props
     return (
       <div className={'header_btn-area fl dropdown' + (open ? ' open' : '')} >
         <button onClick={() => this.toogle()} className={items.length === 1 ? 'no-items' : ''}>
           <span className={'kaz_icons ' + icon}></span>
           <span>
-            {active === null ? defaultTitle : active[name]}
+            {active === null ? (translate ? this.context.t(defaultTitle) : defaultTitle) : (translate ? this.context.t(active[name]) : active[name])}
           </span>
         </button>
         <div className="header_drop_menu clearfix" style={{ width: '300px' }}>
@@ -60,7 +61,7 @@ class HeaderDropDown extends Component {
                     }
                     }>
                       <p>
-                        <span>{item[name]}</span>
+                        <span>{translate ? this.context.t(item[name]) : item[name]}</span>
                         {desc !== null && <span>{item[desc]}</span>}
                       </p>
                     </div>
@@ -93,6 +94,10 @@ class HeaderDropDown extends Component {
       </div>
     );
   }
+}
+
+HeaderDropDown.contextTypes = {
+  t: PropTypes.func.isRequired
 }
 
 export default enhanceWithClickOutside(HeaderDropDown);
