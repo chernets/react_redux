@@ -17,7 +17,7 @@ class PublicKeys extends Component {
     super(props)
     const cache = new CellMeasurerCache({
       fixedWidth: true,
-      minHeight: ROW_HEIGHT,
+      defaultHeight: ROW_HEIGHT,
     });
     this.cache = cache;
   }
@@ -37,6 +37,7 @@ class PublicKeys extends Component {
         type: toast.TYPE.ERROR
       })
     }
+    if(prevProps.list !== this.props.list) this.cache.clearAll()
   }
 
   confirmUserPublicKey(id, confirm){
