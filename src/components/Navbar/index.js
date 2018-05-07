@@ -90,6 +90,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons fields'
           },
           {
+            'title': 'REPRESENRATION',
+            'link': '/admin/represenration',
+            'show': hasRole('ADMIN_FILTER_UPDATE'),
+            'class': 'nav-admin-icons filters'
+          },
+          {
             'title': 'USERS',
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),
