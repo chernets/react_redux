@@ -27,10 +27,10 @@ class FileStorageForm extends Component {
     }
     if (isEmpty(values.priority)) {
       errors.priority = this.context.t(IS_EMPTY)
-    } 
+    }
     if (isEmpty(values.uri)) {
       errors.uri = this.context.t(IS_EMPTY)
-    }else if(validUrl.isWebUri(values.uri) === undefined){
+    } else if (validUrl.isWebUri(values.uri) === undefined) {
       errors.uri = this.context.t('No url')
     }
     if (isEmpty(values.accountId)) {

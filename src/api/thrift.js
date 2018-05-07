@@ -9,6 +9,7 @@ const _thrift = {
   'DocumentPatternClient' : new window.DocumentPatternServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/document-pattern-management-json`))),
   'DepartmentClient' : new window.DepartmentServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/department-json`))),
   'AggregationDataClient': new window.AggregationDataServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/aggregationData-json`))),
+  'FilterClient': new window.FilterServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/filter-json`)))
 }
 
 export const request = (fn) => {

@@ -84,6 +84,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons external-modules'
           },
           {
+            'title': 'FIELDS',
+            'link': '/admin/fields',
+            'show': hasRole('ADMIN_FILTER_UPDATE'),
+            'class': 'nav-admin-icons fields'
+          },
+          {
             'title': 'USERS',
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),
