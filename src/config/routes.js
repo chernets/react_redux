@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';s
+import { Route, Switch } from 'react-router-dom';
 
 import PrivateRoute from '../components/PrivateRoute'
 import SignIn from '../containers/SignIn/';
