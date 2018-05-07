@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import NotFoundPage from '../containers/NotFoundPage';
+import { Route, Switch } from 'react-router-dom';s
 
 import PrivateRoute from '../components/PrivateRoute'
 import SignIn from '../containers/SignIn/';
@@ -10,6 +9,5 @@ export default (
   <Switch>
     <Route path="/login" component={SignIn} />
     <PrivateRoute path="/" component={Dashboard} />
-    <Route component={NotFoundPage} />
   </Switch>
 );

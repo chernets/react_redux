@@ -30,6 +30,10 @@ class Dashboard extends Component {
         <Route path="/admin/publickeys" render={props => (
           <PublicKeys {...props} />
         )} />
+        <Route path="/admin/externalmodule" render={props => (
+          <PublicKeys {...props} />
+        )} />
+        <Redirect to="/" />
       </Switch>,
       <Modals key='modals' />,
       <ToastContainer key='toast' />

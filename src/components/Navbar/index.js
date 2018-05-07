@@ -78,6 +78,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons file-storage'
           },
           {
+            'title': 'EXTERNAL_MODULES',
+            'link': '/admin/externalmodule',
+            'show': hasRole('ADMIN_EXTERNAL_MODULES_UPDATE'),
+            'class': 'nav-admin-icons external-modules'
+          },
+          {
             'title': 'USERS',
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),
