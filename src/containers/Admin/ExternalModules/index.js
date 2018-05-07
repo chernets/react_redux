@@ -34,7 +34,6 @@ class ExternalModules extends Component {
   }
 
   render() {
-    console.log(this.props)
     const translate = this.context.t;
     const { list = [], selected = null, isFetching } = this.props
     return [
@@ -121,16 +120,15 @@ class ExternalModules extends Component {
                   cellRenderer={(props) => {
                     return <RemoveCell {...props} onClick={() => {
                       this.props.show('confirmation', {
-                        desc: translate('YOU_ARE_ABOUT_TO_UNINSTALL_THE_MODULE_WHICH_MAY_RESULT_IN_A_LOSS_OF_FUNCTIONALITY', { name: props.rowData.nameExternalModule }),
+                        desc: translate('YOU_ARE_ABOUT_TO_UNINSTALL_THE_MODULE_WHICH_MAY_RESULT_IN_A_LOSS_OF_FUNCTIONALITY', { nameExternalModule: props.rowData.nameExternalModule }),
                         closeModal: () =>
                           this.props.show('adminPassword', {
                             closeModal: (password) => {
-                              this.props.destroy(props.cellData.id, password)
+                              this.props.destroy(props.cellData, password)
                             }
                           })
                       })
-                    }
-                    } />
+                    }} />
                   }}
                 />
               </Table>,

@@ -30,13 +30,24 @@ export default (state = initValues, action) => {
         selected: action.payload,
         error: null
       }
-    case actions.CREATE_UPDATE_EXTERNAL_MODULES_SUCCESS:
+    case actions.CREATE_EXTERNAL_MODULES_SUCCESS:
       return {
         ...state,
         selected: null,
         error: null
       }
-    case actions.CREATE_UPDATE_EXTERNAL_MODULES_FAILURE:
+    case actions.CREATE_EXTERNAL_MODULES_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
+      case actions.UPDATE_EXTERNAL_MODULES_SUCCESS:
+      return {
+        ...state,
+        selected: null,
+        error: null
+      }
+    case actions.UPDATE_EXTERNAL_MODULES_FAILURE:
       return {
         ...state,
         error: action.payload

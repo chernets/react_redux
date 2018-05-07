@@ -18,16 +18,14 @@ class ExternalModuleForm extends Component {
 
   validateForm(values) {
     const translate = this.context.t
-    let errors = {
-      user: {}
-    }
+    let errors = {}
     if (isEmpty(values.url)) {
       errors.url = this.context.t(IS_EMPTY)
     } else if (validUrl.isWebUri(values.url) === undefined) {
       errors.url = this.context.t('No url')
     }
     if (isEmpty(values.user.userFirstName)) {
-      errors.user.userFirstName = this.context.t(IS_EMPTY)
+      errors = {...errors, user: {...values.user, userFirstName: this.context.t(IS_EMPTY)}}
     }
     return errors
   }
