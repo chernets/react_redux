@@ -10,6 +10,13 @@ import users from './users'
 
 import * as modals from './Modals'
 import * as admin from './Admin'
+
+import createUpdateUser from './Modals/createUpdateUser'
+import changeRoles from './Modals/changeRoles'
+import changeSecurityClassifications from './Modals/changeSecurityClassifications'
+import changeUserOrGroups from './Modals/changeUserOrGroups'
+import changeDepartment from './Modals/changeDepartment'
+
 const rootReducer = asyncInitialState.outerReducer(combineReducers({
   routing,
   i18nState,
@@ -18,12 +25,13 @@ const rootReducer = asyncInitialState.outerReducer(combineReducers({
   auth,
   users,
   modal,
-  modalCreateUpdateUser: modals.createUpdateUser,
-  modalChangeRoles: modals.changeRoles,
-  modalChangeSecurityClassifications: modals.changeSecurityClassifications,
-  modalChangeUserOrGroups: modals.changeUserOrGroups,
-  modalChangeDepartments: modals.changeDepartment,
-  admin: combineReducers({ ...admin })
+  modalCreateUpdateUser: createUpdateUser,
+  modalChangeRoles: changeRoles,
+  modalChangeSecurityClassifications: changeSecurityClassifications,
+  modalChangeUserOrGroups: changeUserOrGroups,
+  modalChangeDepartments: changeDepartment,
+  admin: combineReducers({ ...admin }),
+  modals: combineReducers({...modals})
 }));
 
 export default rootReducer;

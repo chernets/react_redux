@@ -103,7 +103,10 @@ class RepresenrationsForm extends Component {
                     <td>
                       <p>{translate('FIELDS')}</p>
                     </td>
-                    <td onClick={() => { }}>
+                    <td onClick={() => this.props.show('changeDocumentFields', {
+                      isDefault: _.values(values.fields),
+                      closeModal: (val) => change('fields', val)
+                    })}>
                       <Field name={`fields`} component={(propsField) => {
                         return (
                           <List list={_.values(_.mapValues(values.fields, item => { return item.displayName }))} hideMore={false} />

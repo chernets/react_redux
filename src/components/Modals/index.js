@@ -10,6 +10,7 @@ import ChangeUserOrGroups from './ChangeUserOrGroups'
 import CreateDelegate from './CreateDelegate'
 import ChangeDepartment from './ChangeDepartment'
 import AdminPassword from './AdminPassword'
+import ChangeDocumentFields from './ChangeDocumentFields'
 class Modals extends Component {
 
 
@@ -23,7 +24,8 @@ class Modals extends Component {
       <ChangeUserOrGroups key='changeUserOrGroups'/>,
       <CreateDelegate key='createDelegate'/>,
       <ChangeDepartment key='changeDepartment'/>,
-      <AdminPassword key='adminPassword' />
+      <AdminPassword key='adminPassword' />,
+      <ChangeDocumentFields key='changeDocumentFields' />
     ]
   }
 }
