@@ -12,7 +12,7 @@ export const getAll = () => {
     });
     const store = getState()
     try {
-      let request = await FilterClient.getAllCustomFields(store.auth.token, null, true)
+      let request = await FilterClient.getAllCustomFields(store.auth.token, null)
       dispatch({
         type: GET_ALL_FIELDS_SUCCESS,
         payload: request

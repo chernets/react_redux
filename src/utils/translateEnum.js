@@ -1,51 +1,31 @@
-let userType = []
-userType[UserType.CHIEF] = {
-  name: 'HEAD_OF',
-  value: UserType.CHIEF
-}
-userType[UserType.DEPUTY] = {
-  name: 'DEPUTY',
-  value: UserType.DEPUTY
-}
-userType[UserType.EMPLOYEE] = {
-  name: 'EMPLOYEE',
-  value: UserType.EMPLOYEE
-}
-userType[UserType.TECHNICAL] = {
-  name: 'TECHNICAL',
-  value: UserType.TECHNICAL
+const mapToArray = (data, prefix = null) => {
+  let array = []
+  for (let menu in data) {
+    array[data[menu]] = {
+      id: `${prefix === null ? '' : prefix + '.'}${menu}`,
+      name: menu,
+      value: data[menu]
+    }
+  }
+  return array
 }
 
+let userType = mapToArray(UserType)
+userType[UserType.CHIEF].name = 'HEAD_OF'
 
-let fileStorageType = []
-fileStorageType[FileStorageType.PRIMARY] = {
-  name: 'PRIMARY',
-  value: FileStorageType.PRIMARY
-}
-fileStorageType[FileStorageType.ARCHIVE] = {
-  name: 'ARCHIVE',
-  value: FileStorageType.ARCHIVE
-}
+let fileStorageType = mapToArray(FileStorageType)
 
-let keyState = []
-keyState[KeyState.LOADED] = {
-  id: 'KeyState.LOADED',
-  name: 'UPLOADED',
-  value: KeyState.LOADED
-};
-keyState[KeyState.CONFIRM] = {
-  name: 'CONFIRMED_1',
-  id: 'KeyState.CONFIRM',
-  value: KeyState.CONFIRM
-};
-keyState[KeyState.PROHIBITED] = {
-  name: 'PROHIBITED',
-  id: 'KeyState.PROHIBITED',
-  value: KeyState.PROHIBITED
-};
+let keyState = mapToArray(KeyState, 'KeyState')
+keyState[KeyState.LOADED].name = 'UPLOADED'
+keyState[KeyState.CONFIRM].name = 'CONFIRMED_1'
+
+let filterFieldType = mapToArray(FilterFieldType)
+let filterCondition = mapToArray(FilterCondition)
 
 export {
   userType,
   fileStorageType,
-  keyState
+  keyState,
+  filterFieldType,
+  filterCondition
 }

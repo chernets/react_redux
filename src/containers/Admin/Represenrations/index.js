@@ -59,9 +59,9 @@ class Represenrations extends Component {
               >
                 <Column
                   label={translate('NAME')}
-                  dataKey='displayName'
+                  dataKey='name'
                   flexGrow={1}
-                  className='table_body_cell'
+                  className='table_body_cell tl'
                   headerClassName='table_head_cell'
                   width={200}
                 />
@@ -73,9 +73,10 @@ class Represenrations extends Component {
                   width={40}
                   cellRenderer={(props) => {
                     return <RemoveCell {...props} onClick={() => {
+                      console.log(props)
                       this.props.show('confirmation', {
                         desc: translate('YOU_ARE_ABOUT_TO_DELETE_THE_FILTER_WHICH_MAY_RESULT_IN_A_LOSS_OF_FUNCTIONALITY', { name: props.rowData.name }),
-                        closeModal: () =>this.props.destroy(props.cellData)
+                        closeModal: () => this.props.destroy(props.cellData)
                       })
                     }} />
                   }}
@@ -96,9 +97,12 @@ class Represenrations extends Component {
         <div className="r-main_cont business_proc-right">
           <RightTitle label={'REPRESENRATION'} />
           <RightBody>
-            {selected !== null && <RepresenrationsForm selected={selected} />}
+            {selected !== null && <RepresenrationsForm selected={selected} addParametr={click => this.addParametr = click} />}
           </RightBody>
           <div className="business_proc-btn">
+            <div className="btn_select">
+              <span className="btn_select-text" onClick={() => this.addParametr()}>{translate('ADD_PARAMETER')}</span>
+            </div>
             <div className="btn_select">
               <span className={`btn_select-text ${false ? 'disabled' : ''}`} onClick={() => {
                 document
@@ -119,12 +123,12 @@ Represenrations.contextTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    ...state.admin.fields
+    ...state.admin.represenrations
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  ...actions.admin.fields, show
+  ...actions.admin.represenrations, show
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Represenrations);

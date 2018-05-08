@@ -5,6 +5,7 @@ import getAllCustomDocFilters from './getAllCustomDocFilters'
 import createOrUpdateCustomFilterItem from './createOrUpdateCustomFilterItem'
 import removeCustomFilterItem from './removeCustomFilterItem'
 import createOrUpdateCustomDocFilter from './createOrUpdateCustomDocFilter'
+import removeCustomDocFilter from './removeCustomDocFilter'
 export{
   getAllCustomFields,
   createOrUpdateCustomField,
@@ -12,5 +13,6 @@ export{
   getAllCustomDocFilters,
   createOrUpdateCustomFilterItem,
   removeCustomFilterItem,
-  createOrUpdateCustomDocFilter
+  createOrUpdateCustomDocFilter,
+  removeCustomDocFilter
 }
