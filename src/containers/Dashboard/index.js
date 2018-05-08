@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import Modals from '../../components/Modals';
 import Main from '../Main'
 import Users from '../Users'
-import { Registries, FileStorages, PublicKeys, ExternalModules, Fields, Represenrations } from '../Admin'
+import { Registries, FileStorages, PublicKeys, ExternalModules, Fields, Represenrations, Sessions } from '../Admin'
 import { ToastContainer } from 'react-toastify';
 
 class Dashboard extends Component {
@@ -38,6 +38,9 @@ class Dashboard extends Component {
         )} />
         <Route path="/admin/represenration" render={props => (
           <Represenrations {...props} />
+        )} />
+        <Route path="/admin/sessions" render={props => (
+          <Sessions {...props} />
         )} />
         <Redirect to="/" />
       </Switch>,

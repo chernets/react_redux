@@ -4,11 +4,13 @@ import * as publickeys from './publickeys'
 import * as externalmodules from './externalmodules'
 import * as fields from './fields'
 import * as represenrations from './represenrations'
+import * as sessions from './sessions'
 export {
   registries,
   filestorages,
   publickeys,
   externalmodules,
   fields,
-  represenrations
+  represenrations,
+  sessions
 }

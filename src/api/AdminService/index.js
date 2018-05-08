@@ -8,6 +8,8 @@ import getAllExternalModules from './getAllExternalModules'
 import registerExternalModule from './registerExternalModule'
 import refreshExternalModule from './refreshExternalModule'
 import removeExternalModule from './removeExternalModule'
+import getAllSessions from './getAllSessions'
+import getCountAllSessions from './getCountAllSessions'
 export {
   getAllUsersExt,
   getCountAllUsersExt,
@@ -18,5 +20,7 @@ export {
   getAllExternalModules,
   registerExternalModule,
   refreshExternalModule,
-  removeExternalModule
+  removeExternalModule,
+  getAllSessions,
+  getCountAllSessions
 }

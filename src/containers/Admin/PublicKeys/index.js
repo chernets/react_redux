@@ -73,7 +73,7 @@ class PublicKeys extends Component {
               <Table
                 key='table'
                 deferredMeasurementCache={this._cache}
-                height={height}
+                height={height - PAGINATION_HEIGHT}
                 rowCount={list.length}
                 rowHeight={this.cache.rowHeight}
                 headerHeight={HEADER_HEIGHT}
@@ -253,16 +253,16 @@ class PublicKeys extends Component {
                     )
                   }}
                 />
-              </Table>
-              // <Pagination
-              //   page={1}
-              //   width={width}
-              //   count={list.length}
-              //   next={this.props.nextPage}
-              //   prev={this.props.prevPage}
-              //   loading={isFetching}
-              //   key='pagination'
-              // />
+              </Table>,
+              <Pagination
+                page={1}
+                width={width}
+                count={list.length}
+                next={this.props.nextPage}
+                prev={this.props.prevPage}
+                loading={isFetching}
+                key='pagination'
+              />
             ]}
           </AutoSizer>
         </div>

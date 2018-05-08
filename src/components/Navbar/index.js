@@ -96,6 +96,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons filters'
           },
           {
+            'title': 'SESSIONS',
+            'link': '/admin/sessions',
+            'show': hasRole('ADMIN_SESSION_UPDATE'),
+            'class': 'nav-admin-icons sessions'
+          },
+          {
             'title': 'USERS',
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),
