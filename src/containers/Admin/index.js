@@ -5,6 +5,7 @@ import ExternalModules from './ExternalModules'
 import Fields from './Fields'
 import Represenrations from './Represenrations'
 import Sessions from './Sessions'
+import Accounts from './Accounts'
 export {
   Registries,
   FileStorages,
@@ -12,5 +13,6 @@ export {
   ExternalModules,
   Fields,
   Represenrations,
-  Sessions
+  Sessions,
+  Accounts
 }

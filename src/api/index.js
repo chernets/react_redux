@@ -7,6 +7,8 @@ import * as DocumentPatternClient from './DocumentPatternClient'
 import * as DepartmentClient from './DepartmentClient'
 import * as AggregationDataClient from './AggregationDataClient'
 import * as FilterClient from './FilterClient'
+import * as AccountGroupClient from './AccountGroupClient'
+import * as AccountClient from './AccountClient'
 const kazFilter = (data) => {
   return new KazFilter(data)
 }
@@ -31,5 +33,7 @@ export {
   DocumentPatternClient,
   DepartmentClient,
   AggregationDataClient,
-  FilterClient
+  FilterClient,
+  AccountGroupClient,
+  AccountClient
 }

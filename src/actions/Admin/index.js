@@ -5,6 +5,7 @@ import * as externalmodules from './externalmodules'
 import * as fields from './fields'
 import * as represenrations from './represenrations'
 import * as sessions from './sessions'
+import * as accounts from './accounts'
 export {
   registries,
   filestorages,
@@ -12,5 +13,6 @@ export {
   externalmodules,
   fields,
   represenrations,
-  sessions
+  sessions,
+  accounts
 }

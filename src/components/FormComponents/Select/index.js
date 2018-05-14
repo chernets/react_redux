@@ -26,7 +26,32 @@ const Select = (props, context) => {
   )
 }
 
+export const SelectObj = (props, context) => {
+  const hideError = props.hideError || false
+  return (
+    <div className={`${!hideError && props.meta.error && props.meta.touched ? 'error': ''}`}>
+      <VirtualizedSelect options={props.options.map(item => {
+        if (props.translate) item[props.labelKey] = context.t(item[props.labelKey])
+        return item
+      })}
+        optionHeight={30}
+        clearable={false}
+        labelKey={props.labelKey}
+        value={_.find(props.options, (itm) => {
+          return itm.id === props.input.value.id
+        })}
+        disabled={props.disabled || false}
+        onChange={(options) => props.input.onChange(options)}
+      />
+    </div>
+  )
+}
+
 Select.contextTypes = {
+  t: PropTypes.func.isRequired
+}
+
+SelectObj.contextTypes = {
   t: PropTypes.func.isRequired
 }
 

@@ -102,6 +102,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons sessions'
           },
           {
+            'title': 'ACCOUNTS_PAGE',
+            'link': '/admin/accounts',
+            'show': hasRole('ADMIN_ACCOUNT_UPDATE') || hasRole('superAdmin'),
+            'class': 'nav-admin-icons accounts'
+          },
+          {
             'title': 'USERS',
             'link': '/admin/users',
             'show': hasRole('ADMIN_USER_UPDATE'),
