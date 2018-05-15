@@ -2,9 +2,17 @@ import removeSecurityClassificationsFromUserGroups from './removeSecurityClassif
 import addSecurityClassificationsToUserGroups from './addSecurityClassificationsToUserGroups'
 import getAllSecurityClassification from './getAllSecurityClassification'
 import getAllSecurityClassificationDependencies from './getAllSecurityClassificationDependencies'
+import removeSecurityClassification from './removeSecurityClassification'
+import createOrUpdateSecurityClassification from './createOrUpdateSecurityClassification'
+import addSecurityClassificationDependencies from './addSecurityClassificationDependencies'
+import removeSecurityClassificationDependencies from './removeSecurityClassificationDependencies'
 export {
   removeSecurityClassificationsFromUserGroups,
   addSecurityClassificationsToUserGroups,
   getAllSecurityClassification,
-  getAllSecurityClassificationDependencies
+  getAllSecurityClassificationDependencies,
+  removeSecurityClassification,
+  createOrUpdateSecurityClassification,
+  addSecurityClassificationDependencies,
+  removeSecurityClassificationDependencies
 }

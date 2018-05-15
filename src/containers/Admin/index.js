@@ -6,6 +6,7 @@ import Fields from './Fields'
 import Represenrations from './Represenrations'
 import Sessions from './Sessions'
 import Accounts from './Accounts'
+import SecurityClassification from './SecurityClassification'
 export {
   Registries,
   FileStorages,
@@ -14,5 +15,6 @@ export {
   Fields,
   Represenrations,
   Sessions,
-  Accounts
+  Accounts,
+  SecurityClassification
 }

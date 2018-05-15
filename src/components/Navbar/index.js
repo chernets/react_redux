@@ -84,6 +84,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons external-modules'
           },
           {
+            'title': 'VULTURES',
+            'link': '/admin/securityClassification',
+            'show': hasRole('ADMIN_SC_UPDATE'),
+            'class': 'nav-admin-icons greefs'
+          },
+          {
             'title': 'FIELDS',
             'link': '/admin/fields',
             'show': hasRole('ADMIN_FILTER_UPDATE'),
