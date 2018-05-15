@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 
 class NavbarLink extends Component {
-  
+
   render() {
     const { label, to, activeOnlyWhenExact, open, fa, classLink, subMenu } = this.props
     const translate = this.context.t
@@ -49,7 +49,7 @@ class NavbarLink extends Component {
                 </i>
                 {
                   subMenu.length > 0 && (
-                    < div className="lefbar_nav_itm-sub">
+                    <div className={`lefbar_nav_itm-sub ${subMenu.length > 8 ? 'double' : ''}`}>
                       {_.filter(subMenu, { show: true }).map(item => {
                         return (
                           <NavbarLink to={item.link}
