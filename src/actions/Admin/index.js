@@ -7,6 +7,7 @@ import * as represenrations from './represenrations'
 import * as sessions from './sessions'
 import * as accounts from './accounts'
 import * as securityClassification from './securityClassification'
+import * as report from './report'
 export {
   registries,
   filestorages,
@@ -16,5 +17,6 @@ export {
   represenrations,
   sessions,
   accounts,
-  securityClassification
+  securityClassification,
+  report
 }

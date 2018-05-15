@@ -90,6 +90,12 @@ class Navbar extends Component {
             'class': 'nav-admin-icons greefs'
           },
           {
+            'title': 'REPORTS',
+            'link': '/admin/reports',
+            'show': hasRole('ADMIN_REPORT_UPDATE'),
+            'class': 'nav-admin-icons reports'
+          },
+          {
             'title': 'FIELDS',
             'link': '/admin/fields',
             'show': hasRole('ADMIN_FILTER_UPDATE'),

@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import Modals from '../../components/Modals';
 import Main from '../Main'
 import Users from '../Users'
-import { Registries, FileStorages, PublicKeys, ExternalModules, Fields, Represenrations, Sessions, Accounts, SecurityClassification } from '../Admin'
+import { Registries, FileStorages, PublicKeys, ExternalModules, Fields, Represenrations, Sessions, Accounts, SecurityClassification, Reports } from '../Admin'
 import { ToastContainer } from 'react-toastify';
 
 class Dashboard extends Component {
@@ -46,6 +46,9 @@ class Dashboard extends Component {
           <Accounts {...props} />
         )} />
         <Route path="/admin/securityClassification" render={props => (
+          <SecurityClassification {...props} />
+        )} />
+        <Route path="/admin/reports" render={props => (
           <SecurityClassification {...props} />
         )} />
         <Redirect to="/" />

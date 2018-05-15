@@ -11,7 +11,8 @@ const _thrift = {
   'AggregationDataClient': new window.AggregationDataServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/aggregationData-json`))),
   'FilterClient': new window.FilterServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/filter-json`))),
   'AccountClient': new window.AccountServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/account-json`))),
-  'AccountGroupClient': new window.AccountGroupServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/accountGroup-json`)))
+  'AccountGroupClient': new window.AccountGroupServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/accountGroup-json`))),
+  'ReportClient': new window.ReportServiceClient(new window.Thrift.Protocol(new window.Thrift.Transport(`${URL}${CORE}thrift/report-json`))),
 }
 
 export const request = (fn) => {

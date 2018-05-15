@@ -7,6 +7,7 @@ import Represenrations from './Represenrations'
 import Sessions from './Sessions'
 import Accounts from './Accounts'
 import SecurityClassification from './SecurityClassification'
+import Reports from './Reports'
 export {
   Registries,
   FileStorages,
@@ -16,5 +17,6 @@ export {
   Represenrations,
   Sessions,
   Accounts,
-  SecurityClassification
+  SecurityClassification,
+  Reports
 }
